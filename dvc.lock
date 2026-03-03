@@ -1,0 +1,53 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python preprocess.py
+    deps:
+    - path: preprocess.py
+      hash: md5
+      md5: d8c26d2e6fb7412c0097c97d9cafa5d4
+      size: 302
+    outs:
+    - path: data
+      hash: md5
+      md5: 5e3ec7ca56406801fae14cc1bf1fd6d4.dir
+      size: 62
+      nfiles: 2
+  train:
+    cmd: python train.py
+    deps:
+    - path: data
+      hash: md5
+      md5: 5e3ec7ca56406801fae14cc1bf1fd6d4.dir
+      size: 62
+      nfiles: 2
+    - path: train.py
+      hash: md5
+      md5: aa68b4cb4785eafec616b1c86de8e398
+      size: 230
+    outs:
+    - path: model.pkl
+      hash: md5
+      md5: 825d2aa82f431909a03b2a0f96fa1d09
+      size: 38
+  evaluate:
+    cmd: python validate.py
+    deps:
+    - path: data
+      hash: md5
+      md5: 5e3ec7ca56406801fae14cc1bf1fd6d4.dir
+      size: 62
+      nfiles: 2
+    - path: model.pkl
+      hash: md5
+      md5: 825d2aa82f431909a03b2a0f96fa1d09
+      size: 38
+    - path: validate.py
+      hash: md5
+      md5: 4f4f19d066321b201d64827b9a2df142
+      size: 155
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: a85fa0cdb122ce77e462967e45a5cb09
+      size: 18

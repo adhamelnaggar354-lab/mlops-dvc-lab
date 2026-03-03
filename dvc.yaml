@@ -1,0 +1,22 @@
+stages:
+  prepare:
+    cmd: python preprocess.py
+    deps:
+    - preprocess.py
+    outs:
+    - data
+  train:
+    cmd: python train.py
+    deps:
+    - data
+    - train.py
+    outs:
+    - model.pkl
+  evaluate:
+    cmd: python validate.py
+    deps:
+    - data
+    - model.pkl
+    - validate.py
+    metrics:
+    - metrics.json
