@@ -23,13 +23,13 @@ stages:
       nfiles: 2
     - path: train.py
       hash: md5
-      md5: aa68b4cb4785eafec616b1c86de8e398
-      size: 230
+      md5: f2729cc8cf8baece6f99f888c87d4b66
+      size: 250
     outs:
     - path: model.pkl
       hash: md5
-      md5: 825d2aa82f431909a03b2a0f96fa1d09
-      size: 38
+      md5: 710c7cd8305c06d50928df91465d02f9
+      size: 29
   evaluate:
     cmd: python validate.py
     deps:
@@ -40,8 +40,8 @@ stages:
       nfiles: 2
     - path: model.pkl
       hash: md5
-      md5: 825d2aa82f431909a03b2a0f96fa1d09
-      size: 38
+      md5: 710c7cd8305c06d50928df91465d02f9
+      size: 29
     - path: validate.py
       hash: md5
       md5: e06c2f91592766610a5d169ca4f36cbb
